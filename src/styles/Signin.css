@@ -1,0 +1,135 @@
+/* General Layout */
+body {
+    background: #002B4E; /* Dark Blue background */
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Logo and Welcome Animation */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.logo-container {
+  text-align: center;
+  margin-bottom: 20px;
+  animation: fadeInScale 1.5s ease-in-out forwards;
+}
+
+.logo-container img {
+  width: 200px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #FFC107; /* Gold color for the welcome text */
+  margin-bottom: 30px;
+}
+
+/* Form Styles */
+form {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  backdrop-filter: blur(10px);
+}
+
+input {
+  background: #FFFFFF; /* White background for input fields */
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  font-size: 1rem;
+}
+
+button {
+  background: #FFC107; /* Gold button */
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  color: #002B4E; /* Dark blue text */
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #FFC107 0%, #002B4E 100%);
+  color: white; /* White text on hover */
+}
+
+a {
+  color: #FFC107; /* Gold colored links */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover for links */
+}
+
+/* Additional styling for the OTP login buttons */
+.auth-toggle {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.auth-toggle button {
+  background: #FFC107; /* Gold background */
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  color: #002B4E; /* Dark blue text */
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  width: 48%; /* Make buttons half-width with a small gap */
+}
+
+.auth-toggle button.active {
+  background: linear-gradient(135deg, #002B4E 0%, #FFC107 100%);
+  color: white; /* Active button with white text */
+}
+
+/* Additional options for Signup and Forgot Password links */
+.additional-options {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #FFC107;
+  font-size: 1rem;
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 10px;
+}
+
+.link-button:hover {
+  text-decoration: none;
+  color: #FFD54F; /* Slightly lighter color on hover */
+}

@@ -1,0 +1,81 @@
+.notifications-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f3f3f3;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    height: 600px; /* Restrict height */
+    overflow-y: auto; /* Enable scrolling */
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .notifications-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .notification-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .notification-item p {
+    margin: 0;
+    color: #333;
+  }
+  
+  .notification-item span {
+    color: #777;
+    font-size: 0.9rem;
+  }
+  
+  .notifications-actions {
+    display: flex;
+    justify-content: space-around; /* Distribute extra space around buttons */
+    width: 100%; /* Ensure buttons take full width of the container */
+    margin-top: 30px;
+    gap: 20px; /* Add a gap between the buttons */
+  }
+  
+  .homepage-button,
+  .mark-all-read-button,
+  .mark-read-button {
+    background-color: #0073b1;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .homepage-button:hover,
+  .mark-all-read-button:hover,
+  .mark-read-button:hover {
+    background-color: #005a8c;
+  }
+  
+  .homepage-button:disabled,
+  .mark-all-read-button:disabled {
+    background-color: #ccc;
+  }
+  
+  .notification-list-container {
+    max-height: 500px; /* Adjust height to fit content */
+    overflow-y: auto; /* Enable scroll when content overflows */
+  }
+  
