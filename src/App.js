@@ -9,12 +9,14 @@ import HomepageContent from './components/HomepageContent';
 import Notifications from './components/Notifications';
 import CreatePost from './components/CreatePost';
 import QuizList from './components/QuizList';
-import WaitingRoom from './components/WaitingRoom';
+import QuizPage from './components/QuizPage';
+import { SocketProvider } from './components/SocketContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
   return (
+    <SocketProvider>
     <Router>
       <div className="App">
         <Routes>
@@ -27,10 +29,12 @@ function App() {
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/quizzes" element={<QuizList />} />
-          <Route path="/quiz/:quizId/waiting-room" element={<WaitingRoom />} />
+          <Route path="/quiz/:quizId/start" element={<QuizPage />} />
+
         </Routes>
       </div>
     </Router>
+    </SocketProvider>
   );
 }
 

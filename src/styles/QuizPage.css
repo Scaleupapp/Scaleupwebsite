@@ -1,0 +1,105 @@
+/* Quiz Page Container */
+.quiz-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Question Card Container */
+.question-card {
+  background-color: #59c379;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Question Text Styling */
+.question-card h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Option Buttons */
+.question-card button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #0073b1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.question-card button:hover {
+  background-color: #005a8b;
+}
+
+/* Disable selected option */
+.question-card button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Submit Answer Button */
+.question-card .submit-button {
+  background-color: #28a745;
+  color: white;
+  margin-top: 20px;
+  width: fit-content;
+  padding: 10px 20px;
+}
+
+.question-card .submit-button:hover {
+  background-color: #218838;
+}
+
+.question-card .submit-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Timer and Feedback */
+.quiz-page p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 15px;
+}
+
+/* Timer styling */
+.quiz-page .timer {
+  font-size: 1.5rem;
+  color: #ff4d4f;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Feedback styling */
+.quiz-page .feedback {
+  font-size: 1.2rem;
+  color: #0073b1;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Correct and Incorrect Option Styling */
+.correct-option {
+  background-color: #28a745 !important;
+}
+
+.incorrect-option {
+  background-color: #dc3545 !important;
+}

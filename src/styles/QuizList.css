@@ -1,84 +1,99 @@
 /* Container for all quizzes */
 .quiz-list-container {
-    width: 100%;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Enable scrolling */
-    max-height: 70vh; /* Limit the height to make it scrollable */
-  }
-  
-  /* Header for the quizzes section */
-  h2 {
-    font-size: 2rem;
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-  }
-  
-  /* Styling for individual quiz items */
-  .quiz-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .quiz-item h3 {
-    font-size: 1.5rem;
-    color: #0073b1;
-    margin-bottom: 10px;
-    white-space: nowrap; /* Ensure the title remains on one line */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Add ellipsis if title overflows */
-  }
-  
-  /* Styling for scheduled time */
-  .quiz-scheduled {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 5px;
-  }
-  
-  /* Countdown timer styling */
-  .quiz-timer {
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 10px;
-    font-weight: 400;
-  }
-  
-  /* Smaller Register button styling */
-  .quiz-button {
-    background-color: #0073b1;
-    color: white;
-    border: none;
-    padding: 8px 16px; /* Smaller padding for a smaller button */
-    font-size: 0.9rem; /* Smaller font size */
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    align-self: center; /* Center the button */
-    width: fit-content; /* Fix the button size to content width */
-  }
-  
-  .quiz-button:hover {
-    background-color: #005a8b;
-  }
-  
-  /* Disabled waiting room button */
-  .quiz-button.waiting-room-btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; /* Enable scrolling */
+  max-height: 70vh; /* Limit the height to make it scrollable */
+}
+
+/* Header for the quizzes section */
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Styling for individual quiz items */
+.quiz-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; /* Center align the content within each quiz item */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Styling for scheduled time */
+.quiz-scheduled {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* Countdown timer and heading styling */
+.countdown-heading,
+.quiz-countdown {
+  font-size: 0.9rem; /* Decrease text size */
+  color: #ff0000; /* Red color */
+  text-align: center;
+}
+
+/* Countdown container */
+.countdown-container {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Spacing between the heading and the timer */
+  margin-top: 5px; /* Add some margin to separate from the button */
+}
+
+
+/* Smaller Register button styling */
+.quiz-button {
+  background-color: #0073b1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  width: fit-content;
+}
+
+.quiz-button:hover {
+  background-color: #005a8b;
+}
+
+/* Styling for joined button */
+.quiz-button.joined {
+  background-color: gold;
+  color: black;
+}
+
+
+/* Disabled waiting room button */
+.quiz-button.waiting-room-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Join button container */
+.quiz-action {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+  gap: 5px; /* Add spacing between button and countdown */
+  margin-top: 10px;
+}
+

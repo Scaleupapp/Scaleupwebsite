@@ -1,22 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import io from "socket.io-client";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
+import SocketContext from './SocketContext';
 import "../styles/QuizList.css";
 
-// Initialize Socket.IO client
-const socket = io("http://localhost:3000"); // Replace with your server URL
-
 const QuizList = () => {
+  const socket = useContext(SocketContext);
   const [quizzes, setQuizzes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [quizStarted, setQuizStarted] = useState(null); // Track started quiz
+  const [quizStarted, setQuizStarted] = useState(null);
+  const [quizTimers, setQuizTimers] = useState({});
   const [currentTime, setCurrentTime] = useState(new Date());
   const navigate = useNavigate();
 
-  // Fetch quizzes from server
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
@@ -30,6 +28,7 @@ const QuizList = () => {
           .map((quiz) => ({
             ...quiz,
             registered: quiz.isRegistered,
+            joined: false,
           }))
           .sort((a, b) => new Date(a.startTime) - new Date(b.startTime));
 
@@ -43,16 +42,20 @@ const QuizList = () => {
 
     fetchQuizzes();
 
-    // Listen for the quizStarted event from the server
+    // Listen for the 'quizStarted' event from the server
     socket.on("quizStarted", (data) => {
-        console.log("Quiz has started for quiz ID:", data.quizId);
+      console.log("Quiz has started for quiz ID:", data);
       setQuizStarted(data.quizId);
+      setQuizTimers((prevTimers) => ({
+        ...prevTimers,
+        [data.quizId]: new Date(data.startTime).getTime(),
+      }));
     });
 
     return () => {
       socket.off("quizStarted");
     };
-  }, []);
+  }, [socket]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -61,6 +64,34 @@ const QuizList = () => {
 
     return () => clearInterval(timer);
   }, []);
+
+  const getTimeRemaining = (startTime) => {
+    const duration = moment.duration(moment(startTime).diff(currentTime));
+    return {
+      days: Math.floor(duration.asDays()),
+      hours: duration.hours(),
+      minutes: duration.minutes(),
+      seconds: duration.seconds(),
+    };
+  };
+
+  const getQuizCountdown = (quizId) => {
+    const startTime = quizTimers[quizId];
+    if (!startTime) return null;
+
+    const now = new Date().getTime();
+    const timeDiffInSeconds = Math.floor((startTime - now) / 1000);
+
+    if (timeDiffInSeconds <= 0) {
+      alert("The quiz is about to start!");
+      navigate(`/quiz/${quizId}/start`);
+      return "Starting...";
+    }
+
+    const minutes = Math.floor(timeDiffInSeconds / 60);
+    const seconds = timeDiffInSeconds % 60;
+    return `${minutes}m : ${seconds}s`;
+  };
 
   const handleRegister = async (quizId) => {
     try {
@@ -78,7 +109,6 @@ const QuizList = () => {
           quiz._id === quizId ? { ...quiz, registered: true } : quiz
         )
       );
-      // Join the Socket.IO room for this quiz
       socket.emit("joinRoom", { quizId });
     } catch (error) {
       alert("Failed to register for the quiz");
@@ -96,20 +126,15 @@ const QuizList = () => {
           },
         }
       );
-      navigate(`/quiz/${quizId}/waiting-room`);
+
+      setQuizzes(
+        quizzes.map((quiz) =>
+          quiz._id === quizId ? { ...quiz, joined: true } : quiz
+        )
+      );
     } catch (error) {
       alert("Failed to join the waiting room");
     }
-  };
-
-  const getTimeRemaining = (startTime) => {
-    const duration = moment.duration(moment(startTime).diff(currentTime));
-    return {
-      days: Math.floor(duration.asDays()),
-      hours: duration.hours(),
-      minutes: duration.minutes(),
-      seconds: duration.seconds(),
-    };
   };
 
   if (loading) {
@@ -126,6 +151,7 @@ const QuizList = () => {
       <div className="quiz-list">
         {quizzes.map((quiz) => {
           const { days, hours, minutes, seconds } = getTimeRemaining(quiz.startTime);
+          const countdown = getQuizCountdown(quiz._id);
 
           return (
             <div key={quiz._id} className="quiz-item">
@@ -137,9 +163,21 @@ const QuizList = () => {
 
               {quiz.registered ? (
                 quizStarted === quiz._id ? (
-                  <button onClick={() => handleJoinWaitingRoom(quiz._id)} className="quiz-button">
-                    Join Waiting Room
-                  </button>
+                  <div className="quiz-action">
+                    <button
+                      onClick={() => handleJoinWaitingRoom(quiz._id)}
+                      className={`quiz-button ${quiz.joined ? 'joined' : ''}`}
+                      disabled={quiz.joined}
+                    >
+                      {quiz.joined ? "Joined" : "Join Waiting Room"}
+                    </button>
+                    {countdown && (
+                      <div className="countdown-container">
+                        <h4 className="countdown-heading">Quiz Starts In:</h4>
+                        <p className="quiz-countdown">{countdown}</p>
+                      </div>
+                    )}
+                  </div>
                 ) : (
                   <button disabled className="quiz-button waiting-room-btn">
                     Waiting for quiz to start...
