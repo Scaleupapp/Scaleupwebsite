@@ -10,6 +10,7 @@ import Notifications from './components/Notifications';
 import CreatePost from './components/CreatePost';
 import QuizList from './components/QuizList';
 import QuizPage from './components/QuizPage';
+import QuizResults from './components/QuizResults'; 
 import { SocketProvider } from './components/SocketContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -30,6 +31,9 @@ function App() {
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/quizzes" element={<QuizList />} />
           <Route path="/quiz/:quizId/start" element={<QuizPage />} />
+          <Route path="/quiz/:quizId/results" element={<QuizResults />} />
+
+
 
         </Routes>
       </div>
