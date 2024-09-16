@@ -4,7 +4,8 @@ import io from 'socket.io-client';
 
 const SocketContext = createContext();
 
-const socket = io('http://localhost:3000'); // Initialize the socket connection here
+const socket = io("http://ec2-54-211-127-150.compute-1.amazonaws.com:3000");
+
 
 export const SocketProvider = ({ children }) => {
   return (

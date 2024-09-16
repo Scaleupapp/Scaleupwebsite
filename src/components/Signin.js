@@ -28,19 +28,18 @@ const SignIn = () => {
     setSuccess('');
 
     try {
-      const url = loginMethod === 'password' ? 'http://localhost:3000/api/auth/login' : 'http://localhost:3000/api/auth/otp-verify';
+      const url = loginMethod === 'password' 
+        ? 'http://ec2-54-211-127-150.compute-1.amazonaws.com:3000/api/auth/login' 
+        : 'http://ec2-54-211-127-150.compute-1.amazonaws.com:3000/api/auth/otp-verify';
       const response = await axios.post(url, formData);
 
-      // Store the token in localStorage
       localStorage.setItem('token', response.data.token);
-
       setSuccess('Login successful!');
-      
-      // Check if it's the user's first time login
+
       if (response.data.isFirstTimeLogin) {
         navigate('/update-profile');
       } else {
-        navigate('/profile'); // Go to profile page
+        navigate('/profile');
       }
     } catch (error) {
       setError(error.response?.data.message || 'An error occurred');
@@ -57,14 +56,7 @@ const SignIn = () => {
       <div className="form-container">
         <h2>Sign In</h2>
 
-        <div className="auth-toggle">
-          <button className={loginMethod === 'password' ? 'active' : ''} onClick={() => handleToggleLoginMethod('password')}>
-            Login with Username/Password
-          </button>
-          <button className={loginMethod === 'otp' ? 'active' : ''} onClick={() => handleToggleLoginMethod('otp')}>
-            Login via Mobile (OTP)
-          </button>
-        </div>
+
 
         {error && <p className="error-message">{error}</p>}
         {success && <p className="success-message">{success}</p>}

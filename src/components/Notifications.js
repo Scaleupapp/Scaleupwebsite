@@ -13,7 +13,7 @@ const Notifications = () => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/content/notifications', {
+        const response = await axios.get('http://ec2-54-211-127-150.compute-1.amazonaws.com:3000/api/content/notifications', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -34,7 +34,7 @@ const Notifications = () => {
     setLoadingMarkAll(true);
     try {
       await axios.post(
-        'http://localhost:3000/api/content/notifications/mark-as-read',
+        'http://ec2-54-211-127-150.compute-1.amazonaws.com:3000/api/content/notifications/mark-as-read',
         { notificationIds },
         {
           headers: {

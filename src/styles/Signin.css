@@ -1,26 +1,26 @@
-/* General Layout */
+/* Enhanced Background */
 body {
-    background: #002B4E; /* Dark Blue background */
-    color: #FFFFFF;
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
+  background: linear-gradient(135deg, #002B4E, #003F70);
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* Logo and Welcome Animation */
 @keyframes fadeInScale {
   0% {
-    opacity: 0;
-    transform: scale(0.9);
+      opacity: 0;
+      transform: scale(0.9);
   }
   100% {
-    opacity: 1;
-    transform: scale(1);
+      opacity: 1;
+      transform: scale(1);
   }
 }
 
@@ -31,65 +31,68 @@ body {
 }
 
 .logo-container img {
-  width: 200px;
+  width: 150px; /* Responsive size */
+  max-width: 100%;
 }
 
 h1 {
-  font-size: 2.5rem;
-  color: #FFC107; /* Gold color for the welcome text */
-  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #FFC107;
+  margin-bottom: 20px;
 }
 
 /* Form Styles */
-form {
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
-  border-radius: 15px;
+.form-container {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   padding: 30px;
   max-width: 400px;
-  width: 100%;
+  width: 90%; /* Responsive width */
   text-align: center;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
-  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(15px);
 }
 
+/* Input Fields */
 input {
-  background: #FFFFFF; /* White background for input fields */
+  background: rgba(255, 255, 255, 0.8);
   border: none;
-  border-radius: 8px;
-  padding: 10px;
+  border-radius: 12px;
+  padding: 12px;
   width: 100%;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  margin-bottom: 25px; /* Increased margin for more spacing */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   font-size: 1rem;
+  transition: box-shadow 0.3s ease;
 }
 
+
+input:focus {
+  outline: none;
+  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.5);
+}
+
+/* Button Styles */
 button {
-  background: #FFC107; /* Gold button */
+  background: #FFC107;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 12px 20px;
   font-size: 1.1rem;
-  color: #002B4E; /* Dark blue text */
+  color: #002B4E;
   cursor: pointer;
   width: 100%;
-  transition: background 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 button:hover {
   background: linear-gradient(135deg, #FFC107 0%, #002B4E 100%);
-  color: white; /* White text on hover */
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.4);
 }
 
-a {
-  color: #FFC107; /* Gold colored links */
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline; /* Underline on hover for links */
-}
-
-/* Additional styling for the OTP login buttons */
+/* Auth Toggle Buttons */
 .auth-toggle {
   display: flex;
   justify-content: space-between;
@@ -97,23 +100,23 @@ a:hover {
 }
 
 .auth-toggle button {
-  background: #FFC107; /* Gold background */
+  background: #FFC107;
   border: none;
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 1.1rem;
-  color: #002B4E; /* Dark blue text */
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  color: #002B4E;
   cursor: pointer;
+  width: 48%;
   transition: background 0.3s ease-in-out;
-  width: 48%; /* Make buttons half-width with a small gap */
 }
 
 .auth-toggle button.active {
   background: linear-gradient(135deg, #002B4E 0%, #FFC107 100%);
-  color: white; /* Active button with white text */
+  color: white;
 }
 
-/* Additional options for Signup and Forgot Password links */
+/* Additional Options */
 .additional-options {
   margin-top: 20px;
   text-align: center;
@@ -131,5 +134,40 @@ a:hover {
 
 .link-button:hover {
   text-decoration: none;
-  color: #FFD54F; /* Slightly lighter color on hover */
+  color: #FFD54F;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+      font-size: 1.5rem;
+  }
+  
+  .form-container {
+      padding: 20px;
+  }
+  
+  button {
+      font-size: 1rem;
+      padding: 10px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container img {
+      width: 120px;
+  }
+  
+  .form-container {
+      padding: 15px;
+  }
+  
+  input {
+      font-size: 0.9rem;
+  }
+  
+  button {
+      font-size: 0.9rem;
+      padding: 8px 10px;
+  }
 }
