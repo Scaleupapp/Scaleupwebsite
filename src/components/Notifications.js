@@ -13,7 +13,7 @@ const Notifications = () => {
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
-        const response = await axios.get('https://ec2-44-220-156-213.compute-1.amazonaws.com/api/content/notifications', {
+        const response = await axios.get('https://scaleupapp.club/api/content/notifications', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
@@ -34,7 +34,7 @@ const Notifications = () => {
     setLoadingMarkAll(true);
     try {
       await axios.post(
-        'https://ec2-44-220-156-213.compute-1.amazonaws.com/api/content/notifications/mark-as-read',
+        'https://scaleupapp.club/api/content/notifications/mark-as-read',
         { notificationIds },
         {
           headers: {

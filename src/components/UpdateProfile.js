@@ -21,7 +21,7 @@ const UpdateProfile = () => {
     // Fetch the current profile data when the component loads
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('https://ec2-44-220-156-213.compute-1.amazonaws.com/api/users/profiles', {
+        const response = await axios.get('https://scaleupapp.club/api/users/profiles', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         const { user } = response.data;
@@ -66,7 +66,7 @@ const UpdateProfile = () => {
     profileData.append('about', formData.about);
 
     try {
-      await axios.post('https://ec2-44-220-156-213.compute-1.amazonaws.com/api/users/profile', profileData, {
+      await axios.post('https://scaleupapp.club/api/users/profile', profileData, {
         headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       setSuccess('Profile updated successfully!');

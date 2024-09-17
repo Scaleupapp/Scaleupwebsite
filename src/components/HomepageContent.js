@@ -15,7 +15,7 @@ const HomepageContent = () => {
 
     setLoading(true);
     try {
-      const response = await axios.get(`https://ec2-44-220-156-213.compute-1.amazonaws.com/api/content/homepage?page=${page}`, {
+      const response = await axios.get(`https://scaleupapp.club/api/content/homepage?page=${page}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -48,7 +48,7 @@ const HomepageContent = () => {
 
   const handleLike = async (contentId) => {
     // Implement the like functionality
-    await axios.put(`https://ec2-44-220-156-213.compute-1.amazonaws.com/api/content/like/${contentId}`, {}, {
+    await axios.put(`https://scaleupapp.club/api/content/like/${contentId}`, {}, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }
@@ -57,7 +57,7 @@ const HomepageContent = () => {
   };
 
   const handleSave = async (contentId) => {
-    await axios.put(`https://ec2-44-220-156-213.compute-1.amazonaws.com/api/content/save/${contentId}`, {}, {
+    await axios.put(`https://scaleupapp.club/api/content/save/${contentId}`, {}, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`
       }

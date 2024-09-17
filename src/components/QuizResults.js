@@ -21,7 +21,7 @@ const QuizResults = () => {
           throw new Error('Quiz ID is invalid or undefined');
         }
         
-        const response = await axios.get(`https://ec2-44-220-156-213.compute-1.amazonaws.com/api/quiz/quiz-results/${quizId}`);
+        const response = await axios.get(`https://scaleupapp.club/api/quiz/quiz-results/${quizId}`);
         setResults(response.data.results);
         setLoading(false);
       } catch (error) {
