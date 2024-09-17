@@ -21,7 +21,7 @@ const QuizResults = () => {
           throw new Error('Quiz ID is invalid or undefined');
         }
         
-        const response = await axios.get(`http://ec2-54-211-127-150.compute-1.amazonaws.com:3000/api/quiz/quiz-results/${quizId}`);
+        const response = await axios.get(`https://ec2-54-211-127-150.compute-1.amazonaws.com/api/quiz/quiz-results/${quizId}`);
         setResults(response.data.results);
         setLoading(false);
       } catch (error) {

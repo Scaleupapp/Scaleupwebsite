@@ -14,7 +14,7 @@ const ForgotPassword = () => {
   const handleRequestOTP = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://ec2-54-211-127-150.compute-1.amazonaws.com:3000/api/auth/password-gen", {
+      const response = await axios.post("https://ec2-54-211-127-150.compute-1.amazonaws.com/api/auth/password-gen", {
         loginIdentifier
       });
       setSuccess(response.data.message);
@@ -27,7 +27,7 @@ const ForgotPassword = () => {
   const handleResetPassword = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://ec2-54-211-127-150.compute-1.amazonaws.com:3000/api/auth/resetpassword", {
+      const response = await axios.post("https://ec2-54-211-127-150.compute-1.amazonaws.com/api/auth/resetpassword", {
         loginIdentifier,
         otp,
         newPassword

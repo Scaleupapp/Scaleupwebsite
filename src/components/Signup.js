@@ -23,7 +23,7 @@ const Signup = () => {
     setError('');
     setSuccess('');
     try {
-      const response = await axios.post('http://ec2-54-211-127-150.compute-1.amazonaws.com:3000/api/auth/register', formData);
+      const response = await axios.post('https://ec2-54-211-127-150.compute-1.amazonaws.com/api/auth/register', formData);
       setSuccess('Account created successfully! Redirecting to login...');
       
       // After 2 seconds, redirect to the login page

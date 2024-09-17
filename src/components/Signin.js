@@ -29,8 +29,8 @@ const SignIn = () => {
 
     try {
       const url = loginMethod === 'password' 
-        ? 'http://ec2-54-211-127-150.compute-1.amazonaws.com:3000/api/auth/login' 
-        : 'http://ec2-54-211-127-150.compute-1.amazonaws.com:3000/api/auth/otp-verify';
+        ? 'https://ec2-54-211-127-150.compute-1.amazonaws.com/api/auth/login' 
+        : 'https://ec2-54-211-127-150.compute-1.amazonaws.com/api/auth/otp-verify';
       const response = await axios.post(url, formData);
 
       localStorage.setItem('token', response.data.token);
