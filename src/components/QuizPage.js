@@ -74,7 +74,7 @@ const QuizPage = () => {
 
     try {
         // Make the POST request and store the response
-        const response = await axios.post('https://ec2-54-211-127-150.compute-1.amazonaws.com/api/quiz/submit-answer', {
+        const response = await axios.post('https://ec2-44-220-156-213.compute-1.amazonaws.com/api/quiz/submit-answer', {
             quizId: quizIdRef.current,
             questionId: question._id,
             selectedOption: selectedAnswer,

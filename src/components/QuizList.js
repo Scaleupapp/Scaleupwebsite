@@ -18,7 +18,7 @@ const QuizList = () => {
   useEffect(() => {
     const fetchQuizzes = async () => {
       try {
-        const response = await axios.get("https://ec2-54-211-127-150.compute-1.amazonaws.com/api/quiz/list", {
+        const response = await axios.get("https://ec2-44-220-156-213.compute-1.amazonaws.com/api/quiz/list", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -96,7 +96,7 @@ const QuizList = () => {
   const handleRegister = async (quizId) => {
     try {
       await axios.post(
-        "https://ec2-54-211-127-150.compute-1.amazonaws.com/api/quiz/join",
+        "https://ec2-44-220-156-213.compute-1.amazonaws.com/api/quiz/join",
         { quizId },
         {
           headers: {
@@ -118,7 +118,7 @@ const QuizList = () => {
   const handleJoinWaitingRoom = async (quizId) => {
     try {
       await axios.post(
-        "https://ec2-54-211-127-150.compute-1.amazonaws.com/api/quiz/initiate",
+        "https://ec2-44-220-156-213.compute-1.amazonaws.com/api/quiz/initiate",
         { quizId },
         {
           headers: {

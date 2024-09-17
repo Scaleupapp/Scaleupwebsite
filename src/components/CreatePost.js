@@ -53,7 +53,7 @@ const CreatePost = () => {
     postData.append('isDraft', formData.isDraft);
 
     try {
-      const response = await axios.post('https://ec2-54-211-127-150.compute-1.amazonaws.com/api/content/create', postData, {
+      const response = await axios.post('https://ec2-44-220-156-213.compute-1.amazonaws.com/api/content/create', postData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${localStorage.getItem('token')}`,

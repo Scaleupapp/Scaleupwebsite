@@ -13,7 +13,7 @@ const UserProfile = () => {
     // Fetch user profile data
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('https://ec2-54-211-127-150.compute-1.amazonaws.com/api/users/profiles', {
+        const response = await axios.get('https://ec2-44-220-156-213.compute-1.amazonaws.com/api/users/profiles', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}` // assuming token is stored in local storage
           }
